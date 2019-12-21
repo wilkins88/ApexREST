@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ApiEndpoint__c</fullName>
+    <description>The associated base Api endpoint</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The associated base Api endpoint</inlineHelpText>
+    <label>Api Endpoint</label>
+    <referenceTo>ApiEndpoint__mdt</referenceTo>
+    <relationshipLabel>Api Endpoint Versions</relationshipLabel>
+    <relationshipName>ApiEndpointVersions</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

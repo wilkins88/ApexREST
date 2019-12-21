@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EndpointRegex__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>The regular expression to be used to capture the endpoint, excluding version and name
+e.g. for services/apexrest/placeholder/v1/products/1234, the endpoint regex would be products/[0-9]*</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The regular expression to be used to capture the endpoint, excluding version and name
+e.g. for services/apexrest/placeholder/v1/products/1234, the endpoint regex would be products/[0-9]*</inlineHelpText>
+    <label>Endpoint Regex</label>
+    <length>100</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>
