@@ -58,5 +58,11 @@ public class ApiExceptions {
         }
     }
 
+    public class MethodNotSupportedException extends ApiException {
+        public override Integer getStatusCode() {
+            return 501;
+        }
+    }
+
     // hit the common ones, the rest can be implemented as necessary
 }
