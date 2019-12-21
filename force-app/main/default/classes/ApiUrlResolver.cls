@@ -56,14 +56,14 @@ public with sharing class ApiUrlResolver {
      * @return                 The handler configured for the requested endpoint
      * @throws                 ApiExceptions.NotFoundException
      */ 
-    public IApiRequestHandler resolve(String url) {
+    public ApiRequestHandler resolve(String url) {
         for (ApiEndpointVersion__mdt endpoint : this.endpoints) {
             String fullRegex = '/' + 
                 endpoint.ApiEndpoint__r.ApiName__c + '/' + 
                 endpoint.EndpointVersion__c + '/' + 
                 endpoint.ApiEndpoint__r.EndpointRegex__c;
             if (Pattern.matches(fullRegex, url)) {
-                return (IApiRequestHandler)Type.forName(endpoint.ClassName__c).newInstance();
+                return (ApiRequestHandler)Type.forName(endpoint.ClassName__c).newInstance();
             } 
         }
         throw new ApiExceptions.NotFoundException('Endpoint: ' + url + ' not found.');
