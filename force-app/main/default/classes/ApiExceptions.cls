@@ -8,7 +8,7 @@ public class ApiExceptions {
      * Base class since we can't use an interface to impose both the Exception
      * and getStatusCode contracts
      */ 
-    private abstract class ApiException extends Exception {
+    public abstract class ApiException extends Exception {
         /**
          * Returns the status code attached to the error
          * @return   Status code e.g. 404

@@ -1,3 +1,7 @@
+/**
+ * @author Thomas Wilkins
+ * @description Base class for all API handlers to implement for use in the dispatcher
+ */ 
 public abstract class ApiRequestHandler {
 
     @TestVisible

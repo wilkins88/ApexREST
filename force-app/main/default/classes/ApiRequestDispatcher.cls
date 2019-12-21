@@ -1,3 +1,7 @@
+/**
+ * @author Thomas Wilkins
+ * @description Dispatcher class which resolves a url and dispatches the appropriate handler with the appropriate params
+ */ 
 public class ApiRequestDispatcher {
     public static void dispatch(ApiMethod method, String apiName, String endpointVersion) {
         Savepoint sp;
@@ -19,9 +23,10 @@ public class ApiRequestDispatcher {
                     response = handler.doDELETE();
                 }
             }
+            RestContext.response = response.toResponse();
         } catch (ApiExceptions.ApiException e) {
             if (sp != null) Database.rollback(sp);
-            // todo handle the error meessage
+            RestContext.response = (new ApiResponse(e.getStatusCode(), e.getMessage())).toResponse();
         }
     }
 }
