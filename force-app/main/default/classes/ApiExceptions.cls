@@ -1,6 +1,7 @@
 /**
  * @author Thomas Wilkins
  * @description class that houses various API errors
+ * Based on: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses
  */ 
 public class ApiExceptions {
 
@@ -64,5 +65,23 @@ public class ApiExceptions {
         }
     }
 
-    // hit the common ones, the rest can be implemented as necessary
+    public class BadGatewayException extends ApiException {
+        public override Integer getStatusCode() {
+            return 502;
+        }
+    }
+
+    public class ServiceUnavailableException extends ApiException {
+        public override Integer getStatusCode() {
+            return 503;
+        }
+    }
+
+    public class GatewayTimeoutException extends ApiException {
+        public override Integer getStatusCode() {
+            return 504;
+        }
+    }
+
+    // add any other necessary exceptions here
 }
