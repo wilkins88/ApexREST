@@ -2,7 +2,7 @@
  * @author Thomas Wilkins
  * @description Base class for all API handlers to implement for use in the dispatcher
  */ 
-public abstract class ApiRequestHandler {
+public inherited sharing abstract class ApiRequestHandler {
 
     @TestVisible
     private static final String OPERATION_NOT_SUPPORTED = 'Operation {0} is not supported by this endpoint.';

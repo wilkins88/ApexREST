@@ -2,13 +2,15 @@
  * @author Thomas Wilkins
  * @description Dispatcher class which resolves a url and dispatches the appropriate handler with the appropriate params
  */ 
-public class ApiRequestDispatcher {
+public inherited sharing class ApiRequestDispatcher {
     public static void dispatch(ApiMethod method, String apiName, String endpointVersion) {
         Savepoint sp;
         try {
             ApiUrlResolver resolver = new ApiUrlResolver(apiName, endpointVersion);
             ApiRequestHandler handler = resolver.resolve(RestContext.request.requestURI);
-            if (handler.shouldRollBackOnError()) sp = Database.setSavepoint();
+            if (handler.shouldRollBackOnError()) {
+                sp = Database.setSavepoint();
+            } 
             IApiResponse response;
             switch on method {
                 when GET {
@@ -25,8 +27,15 @@ public class ApiRequestDispatcher {
             }
             RestContext.response = response.toResponse();
         } catch (ApiExceptions.ApiException e) {
-            if (sp != null) Database.rollback(sp);
+            if (sp != null) {
+                Database.rollback(sp);
+            }
             RestContext.response = (new ApiResponse(e.getStatusCode(), e.getMessage())).toResponse();
+        } catch (Exception e) {
+            if (sp != null) {
+                Database.rollback(sp);
+            }
+            RestContext.response = (new ApiResponse(500, e.getMessage())).toResponse();
         }
     }
 }

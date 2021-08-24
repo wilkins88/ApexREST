@@ -3,7 +3,7 @@
  * @description basic Api response class. Might not be flexible enough for enterprise integrations
  * but it is a good starting point for simple ones
  */ 
-public class ApiResponse implements IApiResponse {
+public inherited sharing class ApiResponse implements IApiResponse {
     @TestVisible
     private Object responseObject;
     @TestVisible

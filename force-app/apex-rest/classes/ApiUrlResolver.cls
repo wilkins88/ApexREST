@@ -3,7 +3,7 @@
  * @author Thomas Wilkins
  * @description Class for resolving a URL based on endpoint configurations
  */ 
-public with sharing class ApiUrlResolver {
+public inherited sharing class ApiUrlResolver {
     // custom metadata should be "mocked" for tests by directly setting this variable
     @TestVisible
     private List<ApiEndpointVersion__mdt> endpoints {
