@@ -1,6 +1,5 @@
 /**
- * @author Thomas Wilkins
- * @description class that houses various API errors
+ * class that houses various API errors
  * Based on: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses
  */ 
 public inherited sharing class ApiExceptions {

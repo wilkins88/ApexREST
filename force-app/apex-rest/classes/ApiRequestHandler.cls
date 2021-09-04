@@ -7,7 +7,7 @@ public inherited sharing abstract class ApiRequestHandler {
     private static final String OPERATION_NOT_SUPPORTED = 'Operation {0} is not supported by this endpoint.';
 
     @TestVisible
-    protected Map<String, Object> params {
+    protected Map<String, String> params {
         get {
             if (this.params == null) {
                 this.params = new Map<String, Object>();
@@ -132,12 +132,12 @@ public inherited sharing abstract class ApiRequestHandler {
      */
     public void loadRequest(ApiRequest req) {
         for (String queryParam : this.getQueryParams().keySet()) {
-            Object param = req.getQueryParam(queryParam);
+            String param = req.getQueryParam(queryParam);
             this.getQueryParams.get(queryParam).validate(param);
             this.params.put(queryParam, param);
         }
         for (String urlparam : this.getUrlParams().keySet()) {
-            Object param = req.getUrlParam(urlparam);
+            String param = req.getUrlParam(urlparam);
             this.getUrlParams.get(urlparam).validate(param);
             this.params.put(urlparam, param);
         }
@@ -146,6 +146,6 @@ public inherited sharing abstract class ApiRequestHandler {
             this.getHeaders().get(header).validate(headerValue);
             this.headers.put(header, headerValue);
         }
-        this.body = req.processBody(this.getApiContract().class);
+        this.body = req.processBody(this.getApiContract());
     }
 }
