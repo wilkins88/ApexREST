@@ -10,7 +10,7 @@ public inherited sharing abstract class ApiRequestHandler {
     protected Map<String, String> params {
         get {
             if (this.params == null) {
-                this.params = new Map<String, Object>();
+                this.params = new Map<String, String>();
             }
             return this.params;
         }
@@ -48,13 +48,13 @@ public inherited sharing abstract class ApiRequestHandler {
      * Returns the map of url param names to the validator used to validate the url param
      * @return Map of string url param names (as they appear in the url) to validators
      */
-    private abstract Map<String, IValidator> getUrlParams();
+    protected abstract Map<String, IValidator> getUrlParams();
 
     /**
      * Returns the map of header keys to header validators
      * @return Map of string header keys to validators
      */
-    private virtual Map<String, IValidator> getHeaders() {
+    protected virtual Map<String, IValidator> getHeaders() {
         return new Map<String, IValidator>();
     }
 
@@ -62,7 +62,7 @@ public inherited sharing abstract class ApiRequestHandler {
      * Returns the map of query param names to the validator used to validate the query param
      * @return Map of string query param names (as they appear in the url) to validators
      */
-    private virtual Map<String, IValidator> getQueryParams() {
+    protected virtual Map<String, IValidator> getQueryParams() {
         return new Map<String, IValidator>();
     }
 
@@ -142,7 +142,7 @@ public inherited sharing abstract class ApiRequestHandler {
             this.params.put(urlparam, param);
         }
         for (String header : this.getHeaders().keySet()) {
-            String headerValue = req.getHeaderValue(header);
+            String headerValue = req.getHeader(header);
             this.getHeaders().get(header).validate(headerValue);
             this.headers.put(header, headerValue);
         }

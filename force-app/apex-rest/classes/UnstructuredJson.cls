@@ -1,4 +1,4 @@
-public inherited sharing class UnstructuredJson implements IApiContract{
+public inherited sharing class UnstructuredJson implements IApiContract {
     @TestVisible
     private Map<String, Object> payload {
         get {

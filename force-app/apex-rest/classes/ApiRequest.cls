@@ -44,7 +44,7 @@ public inherited sharing class ApiRequest {
         this.method = method;
         this.headers = req.headers;
         this.body = req.requestBody;
-        this.params = params;
+        this.params = req.params;
     }
 
     public String getQueryParam(String key) {
@@ -53,8 +53,8 @@ public inherited sharing class ApiRequest {
 
     public String getUrlParam(String key) {
         for (Integer i = 0; i < this.urlPartsCount; i++) {
-            if (this.url[i] == key && (i + 1) < this.urlPartsCount) {
-                return this.url.get(i + 1);
+            if (this.urlParts[i] == key && (i + 1) < this.urlPartsCount) {
+                return this.urlParts.get(i + 1);
             }
         }
         return null;
@@ -66,7 +66,7 @@ public inherited sharing class ApiRequest {
 
     public IApiContract processBody(IApiContract contract) {
         if (contract == null) {
-            return new UnstructuredJson(JSON.deserializeUntyped(this.body.toString());
+            return new UnstructuredJson(this.body);
         } else {
             return (IApiContract)JSON.deserialize(contract.class, this.body.toString());
         }
