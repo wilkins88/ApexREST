@@ -11,7 +11,7 @@ public inherited sharing class UnstructuredJson implements IApiContract {
     }
 
     public UnstructuredJson(Blob requestBody) {
-        this.payload = JSON.deserializeUntyped(requestBody.toString());
+        this.payload = (Map<String, Object>)JSON.deserializeUntyped(requestBody.toString());
     }
 
     public Map<String, Object> getPayload() {

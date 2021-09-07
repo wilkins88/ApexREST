@@ -133,12 +133,12 @@ public inherited sharing abstract class ApiRequestHandler {
     public void loadRequest(ApiRequest req) {
         for (String queryParam : this.getQueryParams().keySet()) {
             String param = req.getQueryParam(queryParam);
-            this.getQueryParams.get(queryParam).validate(param);
+            this.getQueryParams().get(queryParam).validate(param);
             this.params.put(queryParam, param);
         }
         for (String urlparam : this.getUrlParams().keySet()) {
             String param = req.getUrlParam(urlparam);
-            this.getUrlParams.get(urlparam).validate(param);
+            this.getUrlParams().get(urlparam).validate(param);
             this.params.put(urlparam, param);
         }
         for (String header : this.getHeaders().keySet()) {
